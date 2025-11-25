@@ -94,17 +94,13 @@ jobs:
       - name: Create Patched Package
         run: ipapatch -input EeveeSpotify.ipa -output EeveeSpotify-patched.ipa
    
-      - name: Upload to GitHub Releases
-        uses: softprops/action-gh-release@v2.0.1
+     - name: Upload IPA as artifact
+        uses: actions/upload-artifact@v4
         with:
-          tag_name: eevee-${{ github.run_number }}
-          name: EeveeSpotify (${{ github.run_number }})
-          files: |
-            EeveeSpotify.ipa 
+          name: EeveeSpotify-IPAs
+          path: |
+            EeveeSpotify.ipa
             EeveeSpotify-patched.ipa
-          draft: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Output Release URL
         run: |
