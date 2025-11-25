@@ -99,6 +99,7 @@ jobs:
         with:
           tag_name: eevee-${{ github.run_number }}
           name: EeveeSpotify (${{ github.run_number }})
+          token: ${{ secrets.GH_TOKEN }}
           files: |
             EeveeSpotify.ipa 
             EeveeSpotify-patched.ipa
